@@ -1,8 +1,10 @@
 # pacman-k8s-demo
 
-This is a simple pacman app that utilizes the default storage class in microk8s for storing high score. 
-After installation, Pacman will be available in nodeport 32001
+This is a simple pacman app that utilizes the default storage class for storing high score.
 
+The demo uses a single node of microk8s. After installation, Pacman will be available in single node host IP, port 32001 (NodePort mode).
+
+## Preparation
 Install microk8s and add persistent storage
 
 ```
@@ -16,6 +18,7 @@ microk8s enable hostpath-storage
 microk8s enable metrics-server
 microk8s status --wait-ready
 ```
+## Pacman 
 
 Deploy Pacman
 
@@ -27,7 +30,14 @@ watch microk8s.kubectl -n pacman get all
 ```
 
 Play pacman
+
 ```
 IP=`curl ifconfig.me -s`
 echo "The url is http://$IP:32001"
+```
+
+Uninstall
+
+```
+microk8s.kubectl delete -f .
 ```
