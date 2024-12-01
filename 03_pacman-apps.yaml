@@ -12,21 +12,17 @@ spec:
   selector:
     matchLabels:
       app: pacman
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: pacman
     spec:
-      serviceAccount: pacman
-      serviceAccountName: pacman
       containers:
       - image: quay.io/ifont/pacman-nodejs-app:latest
         name: pacman-app
         env:
         - name: MONGO_SERVICE_HOST
-          value: mongodb 
+          value: mongodb
         - name: MONGO_AUTH_USER
           valueFrom:
             secretKeyRef:

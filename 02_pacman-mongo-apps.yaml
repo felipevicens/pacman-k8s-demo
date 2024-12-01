@@ -21,7 +21,7 @@ metadata:
   namespace: pacman
   labels:
     app: pacman
-  name: mongodb 
+  name: mongodb
 spec:
   replicas: 1
   selector:
@@ -33,8 +33,6 @@ spec:
       labels:
         app: pacman
     spec:
-      serviceAccount: pacman
-      serviceAccountName: pacman
       volumes:
       - name: mongodb-data
         persistentVolumeClaim:
@@ -65,5 +63,3 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/mongodb/data
           name: mongodb-data
-        resources: {}
-status: {}
