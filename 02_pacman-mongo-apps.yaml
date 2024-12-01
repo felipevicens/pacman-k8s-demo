@@ -6,7 +6,7 @@ metadata:
   namespace: pacman
   annotations:
   labels:
-    app: pacman
+    app: mongodb
 spec:
   accessModes:
     - ReadWriteOnce
@@ -20,18 +20,18 @@ metadata:
   creationTimestamp: null
   namespace: pacman
   labels:
-    app: pacman
+    app: mongodb
   name: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pacman
+      app: mongodb
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: pacman
+        app: mongodb
     spec:
       volumes:
       - name: mongodb-data
